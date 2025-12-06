@@ -3,10 +3,6 @@
 ## Tópicos
 
 - [Conceituação de testes baseados em propriedades](#1--Conceituação-de-testes-baseados-em-propriedades)
-- [Identificação de Problemas](#2--identificação-de-problemas)
-- [Especificação do Comportamento Esperado](#3--especificação-do-comportamento-esperado)
-- [Casos de Teste por Partições Equivalentes](#4--casos-de-teste-por-partições-equivalentes)
-- [Análise de Limites](#5--Análise-de-Limites)
 ---
 
 # 1- Conceituação de testes baseados em propriedades
