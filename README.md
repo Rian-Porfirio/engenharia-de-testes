@@ -56,7 +56,7 @@ Neste exercício, o objetivo foi aplicar testes baseados em **propriedades** (Pr
 
 ---
 
-# 3 - Exercício: Isolamento de Classe com Objetos Simulados (Mocks)
+# 3 - Isolamento de Classe com Objetos Simulados (Mocks)
 Neste exercício, o objetivo foi testar a classe ``OrderService`` de forma **isolada**, garantindo que sua dependência externa (``PaymentProcessor``) não influenciasse na lógica de negócio durante os testes. Para isso, foram utilizados **JUnit 5** e **Mockito**, permitindo a criação de um mock que simula o comportamento do processador de pagamentos.
 
 **O foco dos testes foi verificar**     
