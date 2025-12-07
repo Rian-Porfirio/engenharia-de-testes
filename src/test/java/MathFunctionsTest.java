@@ -1,6 +1,6 @@
+import br.com.engTestesJava.MathFunctions;
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.IntRange;
-import br.com.engTestesJava.MathFunctions;
 
 public class MathFunctionsTest {
 
