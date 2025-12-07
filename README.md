@@ -146,7 +146,7 @@ Foram criados testes que validam:
 Os testes utilizam ``assertThrows`` para verificar se a exceção adequada é lançada.
 
 ---
-### 2. Testes de Atualização de Cliente Ativo e Inativo
+#### 2. Testes de Atualização de Cliente Ativo e Inativo
 
 Para garantir o comportamento correto do método ``updateCustomer``, foram criados:
 
@@ -156,7 +156,7 @@ Para garantir o comportamento correto do método ``updateCustomer``, foram criad
 Esses testes confirmam que a partição **“ativo”** e **“inativo”** é tratada corretamente pela regra de negócio
 
 ---
-### 3. Testes de Exclusão de Cliente Ativo e Inativo
+#### 3. Testes de Exclusão de Cliente Ativo e Inativo
 Similar à atualização, foram testadas as partições:
 
 - **cliente ativo** → operação permitida
@@ -166,7 +166,7 @@ O método ``deleteCustomer`` lança exceção quando o cliente está inativo, e 
 
 ---
 
-### 4. Testes de Validação de E-mail
+#### 4. Testes de Validação de E-mail
 
 Usando partição de equivalência, foram testados:
 
@@ -178,7 +178,7 @@ A implementação lança uma exceção específica ``EmailValidation`` para entr
 
 ---
 
-### 5. Teste Completo de Cadastro Válido
+#### 5. Teste Completo de Cadastro Válido
 
 Foi criado um teste que garante que um cliente com todos os dados corretos é cadastrado com sucesso:
 
