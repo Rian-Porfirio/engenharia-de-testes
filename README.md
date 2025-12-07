@@ -4,7 +4,7 @@
 
 - [1 - Exercício: Conceituação de testes baseados em propriedades](#1--conceituação-de-testes-baseados-em-propriedades)
 - [2 - Exercício: Testes Baseados em Propriedades com Jqwik](#2--Testes-Baseados-em-Propriedades-com-Jqwik)
-- [3 - Exercício: Isolamento de Classe com Objetos Simulados (Mocks)](#3--Isolament-de-Classe-com-Objetos-Simulados-(Mocks))
+- [3 - Exercício: Isolamento de Classe com Objetos Simulados (Mocks)](#3--Isolament-de-Classe-com-Objetos-Simulados-Mocks)
 - [4 - Exercício: Testes CRUD com Partição de Equivalência e Análise de Valor Limite](#4--Testes-CRUD-com-Partição-de-Equivalência-e-Análise-de-Valor-Limite)
 ---
 
