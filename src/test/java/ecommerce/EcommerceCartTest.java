@@ -1,4 +1,4 @@
-package Ecommerce;
+package ecommerce;
 
 import base.BaseSeleniumTest;
 import org.junit.jupiter.api.DisplayName;
