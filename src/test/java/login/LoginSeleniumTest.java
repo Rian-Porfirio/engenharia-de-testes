@@ -8,11 +8,22 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import page.FormPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class LoginSeleniumTest extends BaseSeleniumTest {
+    private final By username = By.id("username");
+    private final By password = By.id("password");
+    private final By submit = By.id("submit");
+
+    private final By headerSuccess = By.className("post-title");
+    private final By paragraphSuccess = By.className("has-text-align-center");
+    private final By strongSuccess = By.tagName("strong");
+    private final By logOutButton = By.className("wp-block-button__link");
+
+    private final By error = By.id("error");
 
     private final String VALID_USER = "student";
     private final String VALID_PASSWORD = "Password123";
@@ -27,31 +38,25 @@ public class LoginSeleniumTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Testa login com credenciais corretas")
     public void loginValido() {
-        WebElement usernameInput = setInputData(By.id("username"), VALID_USER);
-        assertThat(usernameInput.getAttribute("value"), containsString(VALID_USER));
-
-        WebElement passwordInput = setInputData(By.id("password"), VALID_PASSWORD);
-        assertThat(passwordInput.getAttribute("value"), containsString(VALID_PASSWORD));
-
-        WebElement submitButton = driver.findElement(By.id("submit"));
-        submitButton.click();
-
-        wait.until(ExpectedConditions.urlContains("/logged-in-successfully"));
+        new FormPage(driver)
+                .preencherInput(username, VALID_USER)
+                .preencherInput(password, VALID_PASSWORD)
+                .submit(submit);
         assertThat(driver.getCurrentUrl(), containsString("/logged-in-successfully"));
 
-        WebElement h1 = driver.findElement(By.className("post-title"));
+        WebElement h1 = driver.findElement(headerSuccess);
         assertThat(h1.getText(), containsString("Logged In Successfully"));
 
-        WebElement paragraph = driver.findElement(By.className("has-text-align-center"));
-        WebElement strong = paragraph.findElement(By.tagName("strong"));
+        WebElement paragraph = driver.findElement(paragraphSuccess);
+        WebElement strong = paragraph.findElement(strongSuccess);
         assertThat(strong.getText(), containsString("Congratulations student. You successfully logged in!"));
 
         String title = driver.getTitle();
         assertThat(title, containsString("Logged In Successfully | Practice Test Automation"));
 
-        WebElement logOutButton = driver.findElement(By.className("wp-block-button__link"));
-        assertThat(logOutButton.getText(), containsString("Log out"));
-        assertThat(logOutButton.getAttribute("href"), containsString("practicetestautomation.com/practice-test-login/"));
+        WebElement logout = driver.findElement(logOutButton);
+        assertThat(logout.getText(), containsString("Log out"));
+        assertThat(logout.getAttribute("href"), containsString("practicetestautomation.com/practice-test-login/"));
     }
 
     @Test
@@ -59,16 +64,16 @@ public class LoginSeleniumTest extends BaseSeleniumTest {
     public void loginUsuarioInvalido() {
         String invalidUser = "estou errado KKKK";
 
-        WebElement usernameInput = setInputData(By.id("username"), invalidUser);
+        WebElement usernameInput = setInputData(username, invalidUser);
         assertThat(usernameInput.getAttribute("value"), containsString(invalidUser));
 
-        WebElement passwordInput = setInputData(By.id("password"), VALID_PASSWORD);
+        WebElement passwordInput = setInputData(password, VALID_PASSWORD);
         assertThat(passwordInput.getAttribute("value"), containsString(VALID_PASSWORD));
 
-        WebElement submitButton = driver.findElement(By.id("submit"));
+        WebElement submitButton = driver.findElement(submit);
         submitButton.click();
 
-        WebElement invalidToast = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("error")));
+        WebElement invalidToast = wait.until(ExpectedConditions.visibilityOfElementLocated(error));
         Assertions.assertNotNull(invalidToast);
         assertThat(invalidToast.getText(), containsString("Your username is invalid!"));
 
@@ -84,16 +89,16 @@ public class LoginSeleniumTest extends BaseSeleniumTest {
     public void loginSenhaInvalida() {
         String invalidPassword = "fala galera sou o totus to com o sombra ó";
 
-        WebElement usernameInput = setInputData(By.id("username"), VALID_USER);
+        WebElement usernameInput = setInputData(username, VALID_USER);
         assertThat(usernameInput.getAttribute("value"), containsString(VALID_USER));
 
-        WebElement passwordInput = setInputData(By.id("password"), invalidPassword);
+        WebElement passwordInput = setInputData(password, invalidPassword);
         assertThat(passwordInput.getAttribute("value"), containsString(invalidPassword));
 
-        WebElement submitButton = driver.findElement(By.id("submit"));
+        WebElement submitButton = driver.findElement(submit);
         submitButton.click();
 
-        WebElement invalidToast = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("error")));
+        WebElement invalidToast = wait.until(ExpectedConditions.visibilityOfElementLocated(error));
         Assertions.assertNotNull(invalidToast);
         assertThat(invalidToast.getText(), containsString("Your password is invalid!"));
 
