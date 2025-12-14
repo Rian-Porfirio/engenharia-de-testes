@@ -59,34 +59,4 @@ public class EcommerceCartTest extends BaseSeleniumTest {
        String sucessMessage = driver.findElement(headerPaginaFinal).getText();
        assertThat(sucessMessage, containsString("Thank you for your order!"));
     }
-
 }
-/*
-A interface que utilizei para testes não nos permite alterar a quantidade do produto, mas seguindo uma regra
-comum de E-commerce, temos duas opções comuns no primeiro momento para selecionar a quantidade do produto, um select ou clicar diversas vezes no botão de "Adicionar ao carrinho"
-
-A lógica caminho "Feliz": clicou X vezes no botao de adicionar, você terá o mesmo X de produtos no carrinho
-
-então em uma interface que te dá essas duas possibilidades que citei, a lógica seria simular uma certa quantidade de cliques e também
-testar interagir com um select utilizando a classe de suporte do selenium.
------
-
-Caso haja a necessidade de realizar uma rolagem na pagina para que o selenium consiga interagir com a interface, seria uma boa opção
-utilizar um WebDriverWait em conjunto com um script javascript para que, quando rodarmos o script de rolagem da página, somente iremos selecionar
-o elemento que estamos buscando, quando ele ficar realmente disponivel na nossa tela
-
-um exemplo de código seria:
-WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); <- enquanto fazia a atividade, percebi que 10 segundos é pouco dependendo do site, então seria bom aumentar um pouco esse tempo... (isso na questão de carregamento da pagina)
-
-WebElement linkElement = wait.until(
-        ExpectedConditions.presenceOfElementLocated(By.linkText("Selenium WebDriver"))
-);
-
-JavascriptExecutor js = (JavascriptExecutor) driver;
-js.executeScript("arguments[0].scrollIntoView(true);", linkElement);
-
-WebElement a = wait.until(ExpectedConditions.elementToBeClickable(linkElement));
-Assertions.assertNotNull(a);
-
-a.click();
- */
